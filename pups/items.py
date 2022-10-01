@@ -1,6 +1,3 @@
-from character import CharacterStats as stat
-
-
 class Item:
     def __init__(self, name,stats=None, durability=1, unbreakable=False, ):
         self.name = name
