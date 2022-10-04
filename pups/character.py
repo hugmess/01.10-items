@@ -10,7 +10,7 @@ class CharacterStats(Enum):
 
 
 class CharacterWithItems(Character):
-    def __init__(self, name="", hp=30, damage=1, defence=0):
+    def __init__(self, name="", hp=30, damage=1, defence=3):
         Character.__init__(self, name, hp, damage)
         self.defence = defence
         self.weapon = None
@@ -29,3 +29,11 @@ class CharacterWithItems(Character):
             additional_damage = 0
 
         target.take_damage(self.damage + additional_damage)
+
+    def armor(self, target):
+        try:
+            additional_defence = self.armor.use()[CharacterStats.DEFENCE]
+        except Exception:
+            additional_defence = 0
+
+        target.take_damage( self.damage - (self.hp + additional_defence) )
