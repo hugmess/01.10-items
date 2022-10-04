@@ -1,3 +1,4 @@
+
 class Item:
     def __init__(self, name,stats=None, durability=1, unbreakable=False, ):
         self.name = name
@@ -15,3 +16,10 @@ class Item:
     def is_broken(self):
         return self.durability <= 0
 
+
+class Weapon(Item):
+    def __init__(self, name,stats = None, durability=5, unbreakable=False, ):
+        Item.__init__(self, name, stats, durability, unbreakable)
+
+    def damage(self):
+        return self.damage - self.durability
